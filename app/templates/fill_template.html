@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Fill Template: {{ template.filename }}</h2>
+<form method="post">
+    <div class="mb-3">
+        <label>Context (JSON)</label>
+        <textarea name="context" class="form-control" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Generate</button>
+</form>
+{% endblock %}
