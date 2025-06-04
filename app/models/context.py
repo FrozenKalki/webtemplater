@@ -3,11 +3,11 @@ from datetime import datetime
 from .. import db
 
 
-class Template(db.Model):
+class TemplateContext(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    filename = db.Column(db.String(255), nullable=False)
-    path = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    data = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    template_id = db.Column(db.Integer, db.ForeignKey('template.id'), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    contexts = db.relationship('TemplateContext', backref='template', lazy=True)
 
