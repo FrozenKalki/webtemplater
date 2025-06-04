@@ -43,6 +43,8 @@ This repository implements only basic functionality:
 - User registration and login with hashed passwords.
 - Uploading DOCX templates, stored per user.
 - Listing templates and generating a filled document from JSON context.
+- Storing named JSON contexts for reuse when filling templates.
+- Managing variable dictionaries with web-based CRUD, import and export.
 
 The full specification includes many additional modules (RBAC, admin interface,
 integrations, etc.) which are out of scope for this initial prototype.
