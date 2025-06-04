@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if context %}Edit{% else %}New{% endif %} Context for {{ template.filename }}</h2>
+<form method="post">
+    {{ csrf_token() }}
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required value="{{ context.name if context else '' }}">
+    </div>
+    <div class="mb-3">
+        <label>Data (JSON)</label>
+        <textarea name="data" class="form-control" rows="5" required>{{ context.data if context else '' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

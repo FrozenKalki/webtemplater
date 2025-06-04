@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Import Variables into {{ dictionary.name }}</h2>
+<form method="post">
+    {{ csrf_token() }}
+    <div class="mb-3">
+        <label>JSON Data</label>
+        <textarea name="data" class="form-control" rows="5" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Mode</label>
+        <select name="mode" class="form-select">
+            <option value="add">Add</option>
+            <option value="replace">Replace</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>
+{% endblock %}

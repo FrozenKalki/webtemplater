@@ -2,6 +2,7 @@
 {% block content %}
 <h2>Sign Up</h2>
 <form method="post">
+    {{ csrf_token() }}
     <div class="mb-3">
         <label>Email</label>
         <input type="email" name="email" class="form-control" required>

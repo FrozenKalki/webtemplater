@@ -21,9 +21,11 @@ def create_app(config_object='config.Config'):
     login_manager.login_view = 'auth.login'
 
     with app.app_context():
-        from .views import auth, templates
+        from .views import auth, templates, dictionaries, main
         app.register_blueprint(auth.bp)
         app.register_blueprint(templates.bp)
+        app.register_blueprint(dictionaries.bp)
+        app.register_blueprint(main.bp)
         db.create_all()
 
     return app

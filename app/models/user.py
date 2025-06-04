@@ -12,6 +12,8 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     templates = db.relationship('Template', backref='owner', lazy=True)
+    contexts = db.relationship('TemplateContext', backref='owner', lazy=True)
+    dictionaries = db.relationship('VariableDictionary', backref='owner', lazy=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -23,3 +25,4 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+

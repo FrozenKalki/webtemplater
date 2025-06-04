@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if dictionary %}Edit{% else %}New{% endif %} Dictionary</h2>
+<form method="post">
+    {{ csrf_token() }}
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required value="{{ dictionary.name if dictionary else '' }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}
