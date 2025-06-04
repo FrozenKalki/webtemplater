@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Dictionaries</h2>
+<a href="{{ url_for('dicts.create_dictionary') }}" class="btn btn-success mb-3">Add Dictionary</a>
+<table class="table">
+    <tr><th>Name</th><th>Created</th><th></th></tr>
+    {% for d in dictionaries %}
+    <tr>
+        <td>{{ d.name }}</td>
+        <td>{{ d.created_at.strftime('%Y-%m-%d') }}</td>
+        <td>
+            <a href="{{ url_for('dicts.view_dictionary', dict_id=d.id) }}" class="btn btn-primary btn-sm">View</a>
+            <a href="{{ url_for('dicts.edit_dictionary', dict_id=d.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+            <a href="{{ url_for('dicts.export_dictionary', dict_id=d.id) }}" class="btn btn-info btn-sm">Export</a>
+            <form action="{{ url_for('dicts.delete_dictionary', dict_id=d.id) }}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3">No dictionaries.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

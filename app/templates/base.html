@@ -8,6 +8,7 @@
 <body class="p-3">
 <nav class="mb-3">
     <a href="/templates/">Templates</a>
+    <a href="{{ url_for('dicts.list_dictionaries') }}">Dictionaries</a>
     {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth.logout') }}">Logout</a>
     {% else %}
